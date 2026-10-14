@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tejas Sharad Patil | AI/ML Engineer &amp; Software Developer</title>
+  <meta name="description" content="Personal portfolio of Tejas Sharad Patil — AI/ML Engineer and Software Developer specializing in intelligent applications, generative AI, LLM integration, and full-stack solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- WEB CURSOR TRAIL -->
+  <canvas id="webCanvas"></canvas>
+
+  <!-- ── PROJECT / DETAIL MODAL ── -->
+  <div id="videoModal" class="video-modal" role="dialog" aria-modal="true" aria-label="Project details modal">
+    <div class="vm-backdrop" id="vmBackdrop"></div>
+    <div class="vm-container">
+      <button class="vm-close" id="vmClose" aria-label="Close modal">✕</button>
+      <div class="vm-header">
+        <span class="vm-icon" id="vmIcon">⚡</span>
+        <div>
+          <h3 class="vm-title" id="vmTitle">Specialization Details</h3>
+          <p class="vm-sub" id="vmSub">Core Superpower &amp; Technical Capability</p>
+        </div>
+      </div>
+      <div style="padding: 24px; color: #ccc; line-height: 1.7; font-size: 0.95rem;" id="modalBodyText">
+        <p>Detailed technical overview and implementation architecture.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RESUME / CV MODAL ── -->
+  <div id="resumeModal" class="resume-modal" role="dialog" aria-modal="true" aria-label="Resume Modal">
+    <div class="vm-backdrop" id="rmBackdrop"></div>
+    <div class="rm-container rm-resume-image-container">
+      <div class="rm-top-bar">
+        <div class="rm-brand">
+          <span class="rm-badge-icon">📄</span>
+          <div>
+            <h3 class="rm-title">TEJAS SHARAD PATIL</h3>
+            <p class="rm-subtitle">AI/ML ENGINEER &amp; SOFTWARE DEVELOPER • RESUME / CV</p>
+          </div>
+        </div>
+        <div class="rm-actions">
+          <a href="tejas_resume.jpg" target="_blank" rel="noopener noreferrer" class="btn btn-outline-red btn-sm" title="Open full resolution in new tab">
+            <span>Open High-Res ↗</span>
+          </a>
+          <a href="tejas_resume.jpg" download="Tejas_Sharad_Patil_Resume.jpg" class="btn btn-primary btn-sm" title="Download Resume">
+            <span>Download 📥</span>
+          </a>
+          <button class="rm-close" id="rmClose" aria-label="Close Resume Modal">✕</button>
+        </div>
+      </div>
+      
+      <!-- Resume Image Viewport -->
+      <div class="rm-image-wrapper">
+        <a href="tejas_resume.jpg" target="_blank" rel="noopener noreferrer" title="Click to view full image in new tab">
+          <img src="tejas_resume.jpg" alt="Tejas Sharad Patil Resume CV" class="rm-resume-img" id="resumeModalImg" />
+        </a>
+      </div>
+
+      <!-- Quick Modal Footer Contact -->
+      <div class="rm-footer-bar">
+        <span class="rm-footer-hint">💡 Tip: Click the image or button above to view full high-resolution</span>
+        <div class="rm-footer-links">
+          <a href="#contact" class="btn btn-ghost btn-sm" id="resumeContactBtn">
+            <span>Contact Me</span>
+            <span class="btn-icon">✉️</span>
+          </a>
+          <a href="https://github.com/tejaspatil-dev26" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
+            <span>GitHub Profile ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LOADING SCREEN ── -->
+  <div id="loader">
+    <div class="loader-web">
+      <div class="loader-spinner">
+        <svg class="loader-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(220,0,0,0.15)" stroke-width="2"/>
+          <circle cx="100" cy="100" r="85" fill="none" stroke="#e00" stroke-width="2"
+            stroke-dasharray="534" stroke-dashoffset="534" class="loader-arc"/>
+          <g stroke="#e00" stroke-width="1" fill="none" opacity="0.4">
+            <line x1="100" y1="15" x2="100" y2="185"/>
+            <line x1="15" y1="100" x2="185" y2="100"/>
+            <line x1="35" y1="35" x2="165" y2="165"/>
+            <line x1="165" y1="35" x2="35" y2="165"/>
+            <ellipse cx="100" cy="100" rx="40" ry="40"/>
+            <ellipse cx="100" cy="100" rx="65" ry="65"/>
+          </g>
+          <circle cx="100" cy="100" r="5" fill="#e00" class="loader-center-dot"/>
+        </svg>
+      </div>
+      <div class="loader-brand">
+        <span class="loader-spider">🕷</span>
+        <span class="loader-text">TEJAS PATIL</span>
+      </div>
+      <div class="loader-progress">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── IN-BETWEEN PAGE (CINEMATIC SPIDER-MAN BACKGROUND) ── -->
+  <div id="welcomeScreen" class="welcome-screen welcome-cinematic-spiderman">
+    <!-- Fullscreen Spider-Man Background Image -->
+    <div class="welcome-bg-image"></div>
+    <div class="welcome-bg-overlay"></div>
+
+    <!-- Structured Cinematic Stage -->
+    <div class="welcome-stage">
+      <!-- Upside: Name & Series Title -->
+      <div class="welcome-top-brand">
+        <h1 class="welcome-hero-name" data-text="TEJAS PATIL">TEJAS PATIL</h1>
+        <div class="welcome-series-label">
+          <span class="series-spider">🕷</span>
+          <span class="series-text">THE SERIES</span>
+          <span class="series-spider">🕷</span>
+        </div>
+      </div>
+
+
+      <!-- Downside: Professional Roles -->
+      <div class="welcome-series-tags">
+        <span>AI/ML ENGINEER</span>
+        <span class="tag-sep">•</span>
+        <span>SOFTWARE DEVELOPER</span>
+        <span class="tag-sep">•</span>
+        <span>PROBLEM SOLVER</span>
+      </div>
+    </div>
+
+    <div class="welcome-click-hint">
+      <div class="welcome-badge">
+        <span class="badge-dot pulsing"></span>
+        <span>CLICK ANYWHERE TO ENTER PORTFOLIO</span>
+        <span class="badge-spider">🕸</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NAVBAR ── -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="logo-spider">🕷</span>
+      <span class="logo-text">TEJAS PATIL</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home"     class="nav-link active">Home</a></li>
+      <li><a href="#about"    class="nav-link">About</a></li>
+      <li><a href="#skills"   class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#journey"  class="nav-link">Journey</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
+      <li><a href="#resume"   class="nav-resume-btn" id="navResumeBtn"><span>Resume CV</span><span>📄</span></a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════
+       HERO SECTION
+  ══════════════════════════════ -->
+  <section id="home" class="hero-section">
+    <!-- Animated web SVG background -->
+    <svg class="hero-web-svg" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.12">
+        <line x1="720" y1="-50" x2="0"    y2="950" stroke="#e00" stroke-width="1.5" class="web-line"/>
+        <line x1="720" y1="-50" x2="240"  y2="950" stroke="#e00" stroke-width="1.5" class="web-line"/>
+        <line x1="720" y1="-50" x2="480"  y2="950" stroke="#e00" stroke-width="1.5" class="web-line"/>
+        <line x1="720" y1="-50" x2="720"  y2="950" stroke="#e00" stroke-width="1.5" class="web-line"/>
+        <line x1="720" y1="-50" x2="960"  y2="950" stroke="#e00" stroke-width="1.5" class="web-line"/>
+        <line x1="720" y1="-50" x2="1200" y2="950" stroke="#e00" stroke-width="1.5" class="web-line"/>
+        <line x1="720" y1="-50" x2="1440" y2="950" stroke="#e00" stroke-width="1.5" class="web-line"/>
+        <ellipse cx="720" cy="-50" rx="220"  ry="165"  fill="none" stroke="#e00" stroke-width="1" class="web-ring"/>
+        <ellipse cx="720" cy="-50" rx="430"  ry="320"  fill="none" stroke="#e00" stroke-width="1" class="web-ring"/>
+        <ellipse cx="720" cy="-50" rx="640"  ry="480"  fill="none" stroke="#e00" stroke-width="1" class="web-ring"/>
+        <ellipse cx="720" cy="-50" rx="850"  ry="637"  fill="none" stroke="#e00" stroke-width="1" class="web-ring"/>
+        <ellipse cx="720" cy="-50" rx="1060" ry="795"  fill="none" stroke="#e00" stroke-width="1" class="web-ring"/>
+      </g>
+    </svg>
+
+    <div id="particles" class="particles-container"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot pulsing"></span>
+        <span>YOUR FRIENDLY NEIGHBOURHOOD AI/ML ENGINEER</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="glitch-text" data-text="TEJAS PATIL">TEJAS PATIL</span>
+        <span class="title-sub">Building Intelligent Applications</span>
+      </h1>
+      <p class="hero-desc">
+        AI/ML Engineer &amp; Software Developer passionate about building intelligent, practical, and user-focused solutions. Transforming cutting-edge Generative AI, LLMs, and data engineering into impactful real-world software.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">
+          <span>Explore Projects</span>
+          <span class="btn-icon">🕸</span>
+        </a>
+        <button class="btn btn-ghost" id="heroResumeBtn">
+          <span>Resume CV 📄</span>
+        </button>
+        <a href="#contact" class="btn btn-outline-red">
+          <span>Get in Touch ✉️</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image-wrapper">
+      <div class="hero-glow-ring r1"></div>
+      <div class="hero-glow-ring r2"></div>
+      <img src="tejas_coat_circle.png" alt="Tejas Sharad Patil" class="hero-img" id="heroImg" />
+      <div class="floating-web-lines">
+        <div class="fwl fwl1"></div>
+        <div class="fwl fwl2"></div>
+        <div class="fwl fwl3"></div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>SCROLL DOWN</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       STATS BAR
+  ══════════════════════════════ -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num" data-target="4">0</span><span class="stat-suffix">+</span>
+      <span class="stat-label">Featured AI Projects</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="1">0</span><span class="stat-suffix">st</span>
+      <span class="stat-label">Rank @ EUREKA 26</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="10">0</span><span class="stat-suffix">+</span>
+      <span class="stat-label">Core Tech &amp; Tools</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="2029">0</span><span class="stat-suffix"></span>
+      <span class="stat-label">B.Tech AI &amp; ML</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       ABOUT SECTION
+  ══════════════════════════════ -->
+  <section id="about" class="about-section section">
+    <div class="section-glow left"></div>
+    <div class="about-container">
+      <div class="about-image-col reveal-left">
+        <div class="about-img-wrapper" id="morphImgWrapper">
+          <div class="morph-container">
+            <!-- Spider-Man Base Image -->
+            <img src="AMAZZING.jpg" alt="Spider-Man" class="about-img morph-img-base" />
+            
+            <!-- Morph Reveal: Tejas Sharad Patil -->
+            <img src="tejas_desk_portrait.jpg" alt="Tejas Sharad Patil" class="about-img morph-img-reveal" />
+
+            <!-- Morph FX: Laser Scanline & Holographic Noise -->
+            <div class="morph-scanline"></div>
+            <div class="morph-glitch-overlay"></div>
+
+            <!-- Morph Hover Hint -->
+            <div class="morph-hint">
+              <span class="hint-icon">⚡</span>
+              <span class="hint-text">Hover to Unmask</span>
+            </div>
+          </div>
+
+          <div class="about-img-border"></div>
+          <div class="about-tag">
+            <span class="tag-spidey"><span>🕷</span><span>Spider-Hero</span></span>
+            <span class="tag-real"><span>⚡</span><span>Tejas Sharad Patil</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content-col reveal-right">
+        <div class="section-badge">
+          <span class="badge-dot pulsing"></span>
+          <span>ABOUT ME</span>
+        </div>
+        <h2 class="section-title">The <span class="text-red">Origin</span> Story</h2>
+        <p class="about-text">
+          I am an Artificial Intelligence and Machine Learning engineering student passionate about building intelligent, practical, and user-focused software solutions. My interests include AI-powered applications, chatbot development, machine learning, and full-stack development.
+        </p>
+        <p class="about-text">
+          <em>"With great power comes great responsibility"</em> — and in software, with powerful AI models comes the responsibility to craft intuitive, ethical, and high-performance applications that solve genuine problems.
+        </p>
+
+        <!-- Highlights list -->
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <span class="highlight-icon">🎯</span>
+            <div><strong>AI/ML Specialist:</strong> Engineering student specializing in Artificial Intelligence &amp; Machine Learning at R. C. Patel Institute of Technology, Shirpur.</div>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🏆</span>
+            <div><strong>Startup Competition Winner:</strong> Secured Rank 1 in the EUREKA 26 startup idea competition for technical innovation.</div>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">⚡</span>
+            <div><strong>Applied Intelligence:</strong> Actively creating systems with Google Gemini API, Streamlit, and modern web architectures.</div>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🌍</span>
+            <div><strong>Real-World Impact:</strong> Projects dedicated to education, healthcare climate risk, and developer efficiency.</div>
+          </div>
+        </div>
+
+        <!-- ── SUPERPOWER CARDS ── -->
+        <div class="powers-grid">
+          <div class="power-card" id="power-genai"
+               data-title="Generative AI &amp; LLMs"
+               data-sub="Google Gemini API, RAG &amp; Chatbot Architectures"
+               data-desc="Developing intelligent assistants and conversational workflows using state-of-the-art LLMs, multi-turn reasoning, prompt engineering, and context-aware retrieval."
+               data-icon="🧠">
+            <div class="power-card-icon">🧠</div>
+            <div class="power-card-body">
+              <strong>Generative AI &amp; LLMs</strong>
+              <span>Gemini API &amp; Chatbots</span>
+            </div>
+            <div class="power-card-play">
+              <span>EXPLORE</span>
+            </div>
+            <div class="power-card-glow"></div>
+          </div>
+
+          <div class="power-card" id="power-ml"
+               data-title="Machine Learning &amp; Data"
+               data-sub="NumPy, Pandas &amp; Preprocessing"
+               data-desc="End-to-end data pipelines, exploratory data analysis, numerical computing, predictive feature engineering, and statistical modeling."
+               data-icon="⚡">
+            <div class="power-card-icon">⚡</div>
+            <div class="power-card-body">
+              <strong>ML &amp; Data Analysis</strong>
+              <span>NumPy &amp; Pandas</span>
+            </div>
+            <div class="power-card-play">
+              <span>EXPLORE</span>
+            </div>
+            <div class="power-card-glow"></div>
+          </div>
+
+          <div class="power-card" id="power-fullstack"
+               data-title="Full-Stack &amp; Streamlit"
+               data-sub="Interactive Web &amp; REST APIs"
+               data-desc="Bridging complex AI backends with reactive, accessible web interfaces via Streamlit, JavaScript, modern HTML5/CSS3, and RESTful web services."
+               data-icon="🌐">
+            <div class="power-card-icon">🌐</div>
+            <div class="power-card-body">
+              <strong>Full-Stack &amp; Streamlit</strong>
+              <span>Web &amp; REST APIs</span>
+            </div>
+            <div class="power-card-play">
+              <span>EXPLORE</span>
+            </div>
+            <div class="power-card-glow"></div>
+          </div>
+
+          <div class="power-card" id="power-innovation"
+               data-title="Innovation &amp; Problem Solving"
+               data-sub="Startup Mindset &amp; Rapid Prototyping"
+               data-desc="First-place winner at EUREKA 26. Dedicated to identifying critical user pain points and engineering elegant, scalable software solutions."
+               data-icon="💡">
+            <div class="power-card-icon">💡</div>
+            <div class="power-card-body">
+              <strong>Problem Solving</strong>
+              <span>EUREKA '26 Rank 1 Winner</span>
+            </div>
+            <div class="power-card-play">
+              <span>EXPLORE</span>
+            </div>
+            <div class="power-card-glow"></div>
+          </div>
+        </div>
+
+        <a href="#skills" class="btn btn-primary mt-20">Inspect Tech Arsenal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       CORE SKILLS SECTION
+  ══════════════════════════════ -->
+  <section id="skills" class="skills-section section">
+    <div class="section-glow right"></div>
+    <div class="section-header">
+      <div class="section-badge center">
+        <span class="badge-dot pulsing"></span>
+        <span>TECH ARSENAL</span>
+      </div>
+      <h2 class="section-title center">The <span class="text-red">Web</span> of Skills</h2>
+      <p class="section-desc center">Core technologies, frameworks, and tools powering intelligent applications</p>
+    </div>
+
+    <div class="skills-grid">
+      <!-- Card 1: AI & ML -->
+      <div class="skill-card reveal-up" data-delay="0">
+        <div class="skill-card-header">
+          <div class="skill-card-icon">🧠</div>
+          <h3 class="skill-card-title">AI, ML &amp; Data</h3>
+        </div>
+        <div class="skill-pill-list">
+          <span class="skill-pill featured">Google Gemini API</span>
+          <span class="skill-pill featured">Generative AI</span>
+          <span class="skill-pill featured">LLM Integration</span>
+          <span class="skill-pill">AI Chatbots</span>
+          <span class="skill-pill">NumPy</span>
+          <span class="skill-pill">Pandas</span>
+          <span class="skill-pill">Data Preprocessing</span>
+          <span class="skill-pill">Data Analysis</span>
+          <span class="skill-pill">RAG Concepts</span>
+          <span class="skill-pill">Machine Learning Fundamentals</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Programming Languages -->
+      <div class="skill-card reveal-up" data-delay="100">
+        <div class="skill-card-header">
+          <div class="skill-card-icon">💻</div>
+          <h3 class="skill-card-title">Programming Languages</h3>
+        </div>
+        <div class="skill-pill-list">
+          <span class="skill-pill featured">Python</span>
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">SQL</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Web Development -->
+      <div class="skill-card reveal-up" data-delay="200">
+        <div class="skill-card-header">
+          <div class="skill-card-icon">🌐</div>
+          <h3 class="skill-card-title">Web &amp; UI Development</h3>
+        </div>
+        <div class="skill-pill-list">
+          <span class="skill-pill featured">Streamlit</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">REST API Integration</span>
+          <span class="skill-pill">Frontend Widget Design</span>
+          <span class="skill-pill">Responsive Design</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Tools & Environments -->
+      <div class="skill-card reveal-up" data-delay="300">
+        <div class="skill-card-header">
+          <div class="skill-card-icon">🛠️</div>
+          <h3 class="skill-card-title">Tools &amp; Environment</h3>
+        </div>
+        <div class="skill-pill-list">
+          <span class="skill-pill featured">Git &amp; GitHub</span>
+          <span class="skill-pill">Visual Studio Code</span>
+          <span class="skill-pill">Jupyter Notebook</span>
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">Python Virtual Environments</span>
+          <span class="skill-pill">Arduino IDE / ArduinoDroid</span>
+        </div>
+      </div>
+
+      <!-- Card 5: Soft Skills & Innovation -->
+      <div class="skill-card reveal-up" data-delay="400">
+        <div class="skill-card-header">
+          <div class="skill-card-icon">💡</div>
+          <h3 class="skill-card-title">Professional &amp; Soft Skills</h3>
+        </div>
+        <div class="skill-pill-list">
+          <span class="skill-pill featured">Problem Solving</span>
+          <span class="skill-pill featured">Critical Thinking</span>
+          <span class="skill-pill">Team Collaboration</span>
+          <span class="skill-pill">Innovation &amp; Prototyping</span>
+          <span class="skill-pill">Presentation &amp; Pitching</span>
+          <span class="skill-pill">Continuous Learning</span>
+        </div>
+      </div>
+
+      <!-- Card 6: Current Interests -->
+      <div class="skill-card reveal-up" data-delay="500">
+        <div class="skill-card-header">
+          <div class="skill-card-icon">🔭</div>
+          <h3 class="skill-card-title">Current Focus Areas</h3>
+        </div>
+        <div class="skill-pill-list">
+          <span class="skill-pill featured">Retrieval-Augmented Gen (RAG)</span>
+          <span class="skill-pill">AI for Healthcare &amp; Climate</span>
+          <span class="skill-pill">AI Usage &amp; Cost Optimization</span>
+          <span class="skill-pill">Autonomous Agents</span>
+          <span class="skill-pill">Full-Stack AI Engineering</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       FEATURED PROJECTS SECTION
+  ══════════════════════════════ -->
+  <section id="projects" class="villains-section section">
+    <div class="section-glow center"></div>
+    <div class="section-header">
+      <div class="section-badge center">
+        <span class="badge-dot pulsing"></span>
+        <span>FEATURED MISSIONS</span>
+      </div>
+      <h2 class="section-title center">Intelligent <span class="text-red">Projects</span></h2>
+      <p class="section-desc center">Turning AI innovation and software engineering into working applications</p>
+    </div>
+
+    <!-- Project selector tabs -->
+    <div class="villain-tabs" id="villainTabs">
+      <button class="vtab active" data-vi="0">AI StudyMate</button>
+      <button class="vtab" data-vi="1">Cross-Platform Chatbot</button>
+      <button class="vtab" data-vi="2">HeatShield AI</button>
+      <button class="vtab" data-vi="3">Eco-AI</button>
+    </div>
+
+    <div class="villain-showcase" id="villainShowcase">
+
+      <!-- PROJECT 1: AI STUDYMATE -->
+      <div class="villain-panel active" data-vi="0">
+        <div class="vp-image-col">
+          <div class="vp-glow doc-ock-glow"></div>
+          <img src="villain_doc_ock.png" alt="AI StudyMate" class="vp-img" />
+          <div class="vp-energy-ring"></div>
+        </div>
+        <div class="vp-info-col">
+          <div class="vp-number">01</div>
+          <div class="villain-tag">AI-POWERED EDUCATION</div>
+          <h3 class="villain-name">AI StudyMate</h3>
+          <p class="villain-alias">Personalized AI Academic Assistant</p>
+          <p class="villain-desc">An AI-powered study assistant concept designed to help students learn more effectively, understand academic topics, and access personalized learning support. The goal is to make studying more interactive, accessible, and efficient through conversational guidance.</p>
+          <div class="vp-stats">
+            <div class="vp-stat"><span class="vps-label">Learning Interactivity</span><div class="vps-bar"><div class="vps-fill" style="width:94%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">Topic Comprehension</span><div class="vps-bar"><div class="vps-fill" style="width:92%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">Gemini API Integration</span><div class="vps-bar"><div class="vps-fill" style="width:96%"></div></div></div>
+          </div>
+          <div class="villain-powers-list">
+            <span>Python</span>
+            <span>Google Gemini API</span>
+            <span>Streamlit / Web</span>
+            <span>Prompt Engineering</span>
+          </div>
+          <div class="project-cta-group">
+            <a href="https://github.com/tejaspatil-dev26" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              <span>GitHub Repo</span>
+              <span class="btn-icon">↗</span>
+            </a>
+            <span class="btn btn-ghost btn-sm" style="opacity:0.8; cursor:default;">
+              <span>Live Demo (Coming Soon)</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: CROSS-PLATFORM AI CHATBOT -->
+      <div class="villain-panel" data-vi="1">
+        <div class="vp-image-col">
+          <div class="vp-glow goblin-glow"></div>
+          <div class="vp-img goblin-css-art">
+            <div class="goblin-scene">
+              <div class="goblin-glider-platform">
+                <div class="glider-wing w-left"></div>
+                <div class="glider-body"></div>
+                <div class="glider-wing w-right"></div>
+                <div class="glider-thruster"></div>
+              </div>
+              <div class="goblin-figure">
+                <div class="goblin-head">
+                  <div class="goblin-mask">
+                    <div class="goblin-ear left"></div>
+                    <div class="goblin-ear right"></div>
+                    <div class="goblin-eye left"></div>
+                    <div class="goblin-eye right"></div>
+                    <div class="goblin-nose"></div>
+                    <div class="goblin-mouth-row">
+                      <div class="goblin-tooth"></div>
+                      <div class="goblin-tooth"></div>
+                      <div class="goblin-tooth"></div>
+                      <div class="goblin-tooth"></div>
+                    </div>
+                  </div>
+                  <div class="goblin-hat"></div>
+                </div>
+                <div class="goblin-body-main">
+                  <div class="goblin-shoulder left"></div>
+                  <div class="goblin-shoulder right"></div>
+                  <div class="goblin-chest-armor"></div>
+                </div>
+                <div class="goblin-arm left">
+                  <div class="goblin-bomb"></div>
+                </div>
+                <div class="goblin-arm right"></div>
+              </div>
+            </div>
+          </div>
+          <div class="vp-energy-ring goblin-ring"></div>
+        </div>
+        <div class="vp-info-col">
+          <div class="vp-number">02</div>
+          <div class="villain-tag">GENERATIVE AI | WEB DEV</div>
+          <h3 class="villain-name">Cross-Platform AI Chatbot</h3>
+          <p class="villain-alias">Embeddable Conversational Widget</p>
+          <p class="villain-desc">A reusable chatbot interface designed to integrate AI-powered assistance into different websites and applications. The project focuses on a consistent user experience and integration through the Google Gemini API, with a lightweight, reusable frontend widget concept.</p>
+          <div class="vp-stats">
+            <div class="vp-stat"><span class="vps-label">Cross-Platform Flexibility</span><div class="vps-bar"><div class="vps-fill" style="width:95%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">UI Responsiveness</span><div class="vps-bar"><div class="vps-fill" style="width:90%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">REST API Integration</span><div class="vps-bar"><div class="vps-fill" style="width:92%"></div></div></div>
+          </div>
+          <div class="villain-powers-list">
+            <span>JavaScript</span>
+            <span>HTML5 &amp; CSS3</span>
+            <span>Google Gemini API</span>
+            <span>REST APIs</span>
+          </div>
+          <div class="project-cta-group">
+            <a href="https://github.com/tejaspatil-dev26" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              <span>GitHub Repo</span>
+              <span class="btn-icon">↗</span>
+            </a>
+            <span class="btn btn-ghost btn-sm" style="opacity:0.8; cursor:default;">
+              <span>Live Demo (Coming Soon)</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: HEATSHIELD AI -->
+      <div class="villain-panel" data-vi="2">
+        <div class="vp-image-col">
+          <div class="vp-glow electro-glow"></div>
+          <img src="villain_electro.png" alt="HeatShield AI" class="vp-img" />
+          <div class="vp-energy-ring electro-ring"></div>
+        </div>
+        <div class="vp-info-col">
+          <div class="vp-number">03</div>
+          <div class="villain-tag">HEALTHCARE &amp; CLIMATE RISK</div>
+          <h3 class="villain-name">HeatShield AI</h3>
+          <p class="villain-alias">Heatwave Scenario &amp; Capacity Forecasting</p>
+          <p class="villain-desc">A heatwave scenario simulator designed to help healthcare planners explore how rising temperatures and reduced healthcare capacity affect emergency demand. Users adjust scenario inputs such as temperature increases, staff availability, and bed capacity to forecast hospital load and capacity exceedance.</p>
+          <div class="vp-stats">
+            <div class="vp-stat"><span class="vps-label">Simulation Fidelity</span><div class="vps-bar"><div class="vps-fill" style="width:91%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">Data Analytics</span><div class="vps-bar"><div class="vps-fill" style="width:95%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">Healthcare Impact</span><div class="vps-bar"><div class="vps-fill" style="width:88%"></div></div></div>
+          </div>
+          <div class="villain-powers-list">
+            <span>Python</span>
+            <span>Streamlit</span>
+            <span>Pandas</span>
+            <span>Data Visualization</span>
+          </div>
+          <div class="project-cta-group">
+            <a href="https://github.com/tejaspatil-dev26" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              <span>GitHub Repo</span>
+              <span class="btn-icon">↗</span>
+            </a>
+            <span class="btn btn-ghost btn-sm" style="opacity:0.8; cursor:default;">
+              <span>Live Demo (Coming Soon)</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: ECO-AI -->
+      <div class="villain-panel" data-vi="3">
+        <div class="vp-image-col">
+          <div class="vp-glow venom-glow"></div>
+          <img src="villain_venom.png" alt="Eco-AI" class="vp-img" />
+          <div class="vp-energy-ring venom-ring"></div>
+        </div>
+        <div class="vp-info-col">
+          <div class="vp-number">04</div>
+          <div class="villain-tag">AI EFFICIENCY | DEV TOOLS</div>
+          <h3 class="villain-name">Eco-AI</h3>
+          <p class="villain-alias">AI Usage, Token &amp; Cost Optimizer</p>
+          <p class="villain-desc">An AI usage optimization platform designed to help developers monitor API usage and costs, identify inefficient prompts, compare model usage, and explore opportunities to eliminate redundant AI computation and reduce carbon impact.</p>
+          <div class="vp-stats">
+            <div class="vp-stat"><span class="vps-label">Cost Optimization</span><div class="vps-bar"><div class="vps-fill" style="width:93%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">Token Tracking</span><div class="vps-bar"><div class="vps-fill" style="width:96%"></div></div></div>
+            <div class="vp-stat"><span class="vps-label">Prompt Efficiency</span><div class="vps-bar"><div class="vps-fill" style="width:90%"></div></div></div>
+          </div>
+          <div class="villain-powers-list">
+            <span>Python</span>
+            <span>AI APIs</span>
+            <span>JavaScript</span>
+            <span>API Analytics</span>
+          </div>
+          <div class="project-cta-group">
+            <a href="https://eco-ai.andsnetwork.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              <span>Visit eco-ai.andsnetwork.com</span>
+              <span class="btn-icon">🌐</span>
+            </a>
+            <a href="https://github.com/tejaspatil-dev26" target="_blank" rel="noopener noreferrer" class="btn btn-outline-red btn-sm">
+              <span>GitHub Repo</span>
+              <span class="btn-icon">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /villain-showcase -->
+  </section>
+
+  <!-- ══════════════════════════════
+       JOURNEY & MILESTONES SECTION
+  ══════════════════════════════ -->
+  <section id="journey" class="history-section section">
+    <div class="section-glow right"></div>
+    <div class="section-header">
+      <div class="section-badge center">
+        <span class="badge-dot pulsing"></span>
+        <span>EDUCATION &amp; MILESTONES</span>
+      </div>
+      <h2 class="section-title center">Journey &amp; <span class="text-red">Achievements</span></h2>
+      <p class="section-desc center">Academic foundation, startup recognition, and continuous technical growth</p>
+    </div>
+
+    <div class="hist-cards">
+
+      <!-- EDUCATION -->
+      <div class="hist-card reveal-up" data-delay="0">
+        <div class="hist-card-img">
+          <div class="hist-img-placeholder hc1">
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs>
+                <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#3d0000"/>
+                  <stop offset="100%" stop-color="#0a0000"/>
+                </radialGradient>
+              </defs>
+              <rect width="300" height="200" fill="url(#g1)"/>
+              <!-- Tech Grid lines -->
+              <g stroke="#e00" stroke-width="0.7" opacity="0.3">
+                <line x1="30" y1="0" x2="30" y2="200"/><line x1="75" y1="0" x2="75" y2="200"/>
+                <line x1="120" y1="0" x2="120" y2="200"/><line x1="165" y1="0" x2="165" y2="200"/>
+                <line x1="210" y1="0" x2="210" y2="200"/><line x1="255" y1="0" x2="255" y2="200"/>
+                <line x1="0" y1="40" x2="300" y2="40"/><line x1="0" y1="80" x2="300" y2="80"/>
+                <line x1="0" y1="120" x2="300" y2="120"/><line x1="0" y1="160" x2="300" y2="160"/>
+              </g>
+              <!-- Graduation Cap / AI Icon -->
+              <g transform="translate(150,90)" stroke="#e00" stroke-width="2" fill="none">
+                <polygon points="0,-25 50,0 0,25 -50,0" fill="rgba(220,0,0,0.2)"/>
+                <line x1="0" y1="25" x2="0" y2="50"/>
+                <path d="M-30,10 L-30,35 Q0,55 30,35 L30,10" fill="none"/>
+              </g>
+              <text x="150" y="175" text-anchor="middle" fill="#e00" font-family="'Oswald', sans-serif" font-size="12" letter-spacing="1">R. C. PATEL INSTITUTE OF TECHNOLOGY</text>
+            </svg>
+          </div>
+          <div class="hist-year-badge">2029</div>
+        </div>
+        <div class="hist-card-body">
+          <h3 class="hist-card-title">B.Tech in Artificial Intelligence &amp; Machine Learning</h3>
+          <p class="hist-card-text">Pursuing Bachelor of Technology in AI &amp; ML at R. C. Patel Institute of Technology, Shirpur. Specializing in neural architectures, core data structures, algorithms, and applied machine learning.</p>
+          <div class="hist-tag">🎓 Engineering Degree</div>
+        </div>
+      </div>
+
+      <!-- EUREKA 26 -->
+      <div class="hist-card reveal-up" data-delay="100">
+        <div class="hist-card-img">
+          <div class="hist-img-placeholder hc2">
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs>
+                <radialGradient id="g2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#2a1000"/>
+                  <stop offset="100%" stop-color="#080300"/>
+                </radialGradient>
+              </defs>
+              <rect width="300" height="200" fill="url(#g2)"/>
+              <!-- Trophy Icon -->
+              <g transform="translate(150,85)" stroke="#ffaa00" stroke-width="2" fill="rgba(255,170,0,0.15)">
+                <path d="M-25,-30 L25,-30 L20,10 Q0,30 -20,10 Z"/>
+                <path d="M-25,-20 Q-45,-20 -35,5 Q-25,15 -18,10" fill="none"/>
+                <path d="M25,-20 Q45,-20 35,5 Q25,15 18,10" fill="none"/>
+                <line x1="0" y1="30" x2="0" y2="48"/>
+                <rect x="-20" y="48" width="40" height="10" rx="2" fill="#ffaa00"/>
+              </g>
+              <text x="150" y="175" text-anchor="middle" fill="#ffaa00" font-family="'Oswald', sans-serif" font-size="12" letter-spacing="1">EUREKA 26 — RANK 1 WINNER</text>
+            </svg>
+          </div>
+          <div class="hist-year-badge">RANK 1</div>
+        </div>
+        <div class="hist-card-body">
+          <h3 class="hist-card-title">EUREKA 26 Startup Idea Champion</h3>
+          <p class="hist-card-text">Awarded 1st Place in the prestigious EUREKA 26 startup idea competition. Recognized for presenting an innovative, scalable technology solution with a clear real-world value proposition.</p>
+          <div class="hist-tag">🏆 1st Place Award</div>
+        </div>
+      </div>
+
+      <!-- POWER BI -->
+      <div class="hist-card reveal-up" data-delay="200">
+        <div class="hist-card-img">
+          <div class="hist-img-placeholder hc3">
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs>
+                <radialGradient id="g3" cx="50%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#001a33"/>
+                  <stop offset="100%" stop-color="#000508"/>
+                </radialGradient>
+              </defs>
+              <rect width="300" height="200" fill="url(#g3)"/>
+              <!-- Analytics Chart lines -->
+              <g stroke="#0088ff" stroke-width="2" fill="none" opacity="0.8">
+                <line x1="50" y1="140" x2="250" y2="140" stroke="#444"/>
+                <line x1="50" y1="30" x2="50" y2="140" stroke="#444"/>
+                <path d="M60,120 L100,95 L140,110 L190,60 L240,40" stroke-width="3"/>
+                <rect x="75" y="105" width="12" height="35" fill="rgba(0,136,255,0.4)"/>
+                <rect x="115" y="85" width="12" height="55" fill="rgba(0,136,255,0.4)"/>
+                <rect x="165" y="70" width="12" height="70" fill="rgba(0,136,255,0.4)"/>
+                <rect x="215" y="45" width="12" height="95" fill="rgba(0,136,255,0.4)"/>
+              </g>
+              <text x="150" y="175" text-anchor="middle" fill="#4499ff" font-family="'Oswald', sans-serif" font-size="12" letter-spacing="1">COURSERA CERTIFICATION</text>
+            </svg>
+          </div>
+          <div class="hist-year-badge">CERT</div>
+        </div>
+        <div class="hist-card-body">
+          <h3 class="hist-card-title">Data Analysis &amp; Visualization with Power BI</h3>
+          <p class="hist-card-text">Completed comprehensive training on Coursera covering data ingestion, modeling, DAX computations, interactive KPI dashboards, and business intelligence reporting.</p>
+          <div class="hist-tag">📊 Data Visualization</div>
+        </div>
+      </div>
+
+      <!-- ACTIVE RESEARCH -->
+      <div class="hist-card reveal-up" data-delay="300">
+        <div class="hist-card-img">
+          <div class="hist-img-placeholder hc4">
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <defs>
+                <radialGradient id="g4" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#1a0022"/>
+                  <stop offset="100%" stop-color="#050009"/>
+                </radialGradient>
+              </defs>
+              <rect width="300" height="200" fill="url(#g4)"/>
+              <!-- Neural Network Nodes -->
+              <g stroke="#cc33ff" stroke-width="1.5" fill="#cc33ff">
+                <circle cx="70" cy="60" r="5"/><circle cx="70" cy="100" r="5"/><circle cx="70" cy="140" r="5"/>
+                <circle cx="150" cy="40" r="6"/><circle cx="150" cy="80" r="6"/><circle cx="150" cy="120" r="6"/><circle cx="150" cy="160" r="6"/>
+                <circle cx="230" cy="70" r="5"/><circle cx="230" cy="130" r="5"/>
+                <line x1="70" y1="60" x2="150" y2="40" opacity="0.4"/>
+                <line x1="70" y1="60" x2="150" y2="80" opacity="0.4"/>
+                <line x1="70" y1="100" x2="150" y2="80" opacity="0.4"/>
+                <line x1="70" y1="100" x2="150" y2="120" opacity="0.4"/>
+                <line x1="70" y1="140" x2="150" y2="120" opacity="0.4"/>
+                <line x1="70" y1="140" x2="150" y2="160" opacity="0.4"/>
+                <line x1="150" y1="40" x2="230" y2="70" opacity="0.4"/>
+                <line x1="150" y1="80" x2="230" y2="70" opacity="0.4"/>
+                <line x1="150" y1="120" x2="230" y2="130" opacity="0.4"/>
+                <line x1="150" y1="160" x2="230" y2="130" opacity="0.4"/>
+              </g>
+              <text x="150" y="185" text-anchor="middle" fill="#cc33ff" font-family="'Oswald', sans-serif" font-size="12" letter-spacing="1">RAG &amp; GENERATIVE AI SYSTEMS</text>
+            </svg>
+          </div>
+          <div class="hist-year-badge">NOW</div>
+        </div>
+        <div class="hist-card-body">
+          <h3 class="hist-card-title">Intelligent Automation &amp; RAG</h3>
+          <p class="hist-card-text">Actively researching and architecting Retrieval-Augmented Generation workflows, LLM cost-efficiency pipelines, and climate/healthcare data simulation models.</p>
+          <div class="hist-tag">⚡ Active Research</div>
+        </div>
+      </div>
+
+    </div><!-- /hist-cards -->
+  </section>
+
+  <!-- ══════════════════════════════
+       PROJECT SHOWCASE GALLERY
+  ══════════════════════════════ -->
+  <section id="gallery" class="gallery-section section">
+    <div class="section-header">
+      <div class="section-badge center">
+        <span class="badge-dot pulsing"></span>
+        <span>VISUAL ARSENAL</span>
+      </div>
+      <h2 class="section-title center">The <span class="text-red">Web</span> of Creations</h2>
+    </div>
+
+    <!-- UNIFIED SPIDER-VERSE MASTER FRAME -->
+    <div class="gallery-master-frame reveal-up">
+      <!-- Sci-Fi Corner Brackets on the Master Frame -->
+      <span class="gmf-corner gmf-tl"></span>
+      <span class="gmf-corner gmf-tr"></span>
+      <span class="gmf-corner gmf-bl"></span>
+      <span class="gmf-corner gmf-br"></span>
+
+      <!-- Frame Perimeter Glow Sheen -->
+      <div class="gmf-laser-beam"></div>
+
+      <!-- Frame HUD Top Bar -->
+      <div class="gmf-hud-bar gmf-hud-top">
+        <div class="gmf-hud-tag">
+          <span class="gmf-dot pulsing"></span>
+          <span class="gmf-mono">MULTIVERSE REPOSITORY // EARTH-1610</span>
+        </div>
+        <div class="gmf-spider-badge">
+          <span class="gmf-spider-icon">🕷</span>
+          <span class="gmf-badge-title">THE WEB OF CREATIONS • MASTER FRAME</span>
+        </div>
+        <div class="gmf-hud-stats">
+          <span class="gmf-mono">SEC-05 • 5 NODES</span>
+          <span class="gmf-status-pill">SYNC: 100%</span>
+        </div>
+      </div>
+
+      <!-- The Inner Picture Canvas Grid -->
+      <div class="gallery-frame-inner">
+        <div class="gallery-grid">
+          <div class="gallery-item gi-large reveal-up">
+            <img src="MAN.jpg" alt="Tejas Patil AI Vision" />
+            <div class="gallery-overlay"><span>Neural Vision &amp; Deep Learning</span></div>
+          </div>
+          <div class="gallery-item reveal-up" style="transition-delay:0.1s">
+            <img src="AMAZZING.jpg" alt="AI StudyMate" />
+            <div class="gallery-overlay"><span>AI StudyMate Co-Pilot</span></div>
+          </div>
+          <div class="gallery-item reveal-up" style="transition-delay:0.2s">
+            <img src="MERGE.jpg" alt="Full-Stack Developer" />
+            <div class="gallery-overlay"><span>Full-Stack Development</span></div>
+          </div>
+          <div class="gallery-item reveal-up" style="transition-delay:0.3s">
+            <img src="villain_doc_ock.png" alt="HeatShield AI" />
+            <div class="gallery-overlay"><span>HeatShield AI Simulation</span></div>
+          </div>
+          <div class="gallery-item gallery-web-portal reveal-up" style="transition-delay:0.4s" id="webPortalCard">
+            <div class="web-portal-zoom-container">
+              <img src="spider_web_bg.jpg" alt="Multiverse Neural Web Matrix" class="web-portal-img" id="webPortalImg" />
+              <div class="portal-rings-overlay">
+                <span class="portal-ring ring-1"></span>
+                <span class="portal-ring ring-2"></span>
+                <span class="portal-ring ring-3"></span>
+              </div>
+              <div class="portal-ambient-glow"></div>
+            </div>
+            <div class="gallery-overlay">
+              <span>Multiverse Neural Web Matrix</span>
+              <small class="portal-tag">🌀 Dimension Warp</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frame HUD Bottom Bar -->
+      <div class="gmf-hud-bar gmf-hud-bottom">
+        <div class="gmf-hud-coord">
+          <span class="gmf-coord-pin">📍</span>
+          <span class="gmf-mono">LAT: 40.7128° N • LON: 74.0060° W [NYC]</span>
+        </div>
+        <div class="gmf-hud-webline">
+          <span class="gmf-pulse-thread"></span>
+        </div>
+        <div class="gmf-hud-hint">
+          <span class="gmf-mono">HOVER TO EXPAND • SCROLL TO WARP DIMENSIONS 🕸</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       CONTACT SECTION
+  ══════════════════════════════ -->
+  <section id="contact" class="contact-section section">
+    <div class="section-glow left"></div>
+    <div class="contact-cyber-grid"></div>
+    <div class="contact-radial-beam"></div>
+
+    <div class="section-header">
+      <div class="section-badge center">
+        <span class="badge-dot pulsing"></span>
+        <span>GET IN TOUCH</span>
+      </div>
+      <h2 class="section-title center">Send a <span class="text-red">Web Signal</span></h2>
+      <p class="section-desc center">Have a project idea, internship opportunity, or wish to collaborate? Reach out!</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Direct Contact Info -->
+      <div class="contact-info-col reveal-left">
+        <div class="contact-card">
+          <span class="corner-bracket cb-tl"></span>
+          <span class="corner-bracket cb-br"></span>
+          <div class="contact-icon">
+            <span class="icon-radar-ring"></span>
+            <span class="icon-radar-ring delay-1"></span>
+            📍
+          </div>
+          <div class="contact-details">
+            <h4>Location</h4>
+            <p>Shirpur, Maharashtra, India</p>
+            <p style="color:var(--grey-l); font-size:0.85rem; margin-top:2px;">Open to Remote Opportunities</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="corner-bracket cb-tl"></span>
+          <span class="corner-bracket cb-br"></span>
+          <div class="contact-icon">
+            <span class="icon-radar-ring"></span>
+            <span class="icon-radar-ring delay-1"></span>
+            💻
+          </div>
+          <div class="contact-details">
+            <h4>GitHub</h4>
+            <a href="https://github.com/tejaspatil-dev26" target="_blank" rel="noopener noreferrer">github.com/tejaspatil-dev26</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="corner-bracket cb-tl"></span>
+          <span class="corner-bracket cb-br"></span>
+          <div class="contact-icon">
+            <span class="icon-radar-ring"></span>
+            <span class="icon-radar-ring delay-1"></span>
+            🌐
+          </div>
+          <div class="contact-details">
+            <h4>Eco-AI Deployment</h4>
+            <a href="https://eco-ai.andsnetwork.com" target="_blank" rel="noopener noreferrer">eco-ai.andsnetwork.com</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="corner-bracket cb-tl"></span>
+          <span class="corner-bracket cb-br"></span>
+          <div class="contact-icon">
+            <span class="icon-radar-ring"></span>
+            <span class="icon-radar-ring delay-1"></span>
+            ✉️
+          </div>
+          <div class="contact-details">
+            <h4>Email</h4>
+            <a href="mailto:tejaspatil2629@gmail.com">tejaspatil2629@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="corner-bracket cb-tl"></span>
+          <span class="corner-bracket cb-br"></span>
+          <div class="contact-icon">
+            <span class="icon-radar-ring"></span>
+            <span class="icon-radar-ring delay-1"></span>
+            📄
+          </div>
+          <div class="contact-details">
+            <h4>Resume / CV</h4>
+            <p style="font-size:0.9rem; color:var(--grey-l); margin-bottom:8px;">B.Tech AI/ML • EUREKA '26 Winner</p>
+            <button class="btn btn-outline-red btn-sm" id="contactResumeBtn">
+              <span>View Resume Summary 📄</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrap reveal-right">
+        <!-- Tech HUD Brackets -->
+        <span class="corner-bracket cb-tl"></span>
+        <span class="corner-bracket cb-tr"></span>
+        <span class="corner-bracket cb-bl"></span>
+        <span class="corner-bracket cb-br"></span>
+
+        <!-- Futuristic HUD Telemetry Header -->
+        <div class="form-hud-header">
+          <div class="hud-status">
+            <span class="hud-beacon pulsing"></span>
+            <span class="hud-status-text">TRANSMITTER ONLINE</span>
+          </div>
+          <div class="hud-signal-meter">
+            <span class="signal-bar bar-1"></span>
+            <span class="signal-bar bar-2"></span>
+            <span class="signal-bar bar-3"></span>
+            <span class="signal-bar bar-4"></span>
+            <span class="signal-text">FREQ: 104.9 MHz • READY</span>
+          </div>
+        </div>
+
+        <h3 class="form-title">Transmit a Message</h3>
+        <p class="form-desc">Fill out the form below to send a message directly to Tejas.</p>
+
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/tejaspatil2629@gmail.com" method="POST">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_subject" id="fsSubject" value="New Web Signal from Portfolio!" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cName">Your Name</label>
+              <div class="input-field-wrap">
+                <input type="text" id="cName" name="name" class="form-input" placeholder="e.g. Peter Parker" required />
+                <span class="input-glow-line"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cEmail">Your Email</label>
+              <div class="input-field-wrap">
+                <input type="email" id="cEmail" name="email" class="form-input" placeholder="e.g. peter@spiderverse.com" required />
+                <span class="input-glow-line"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cSubject">Subject</label>
+            <div class="input-field-wrap">
+              <input type="text" id="cSubject" name="subject" class="form-input" placeholder="e.g. Project Collaboration / Opportunity" required />
+              <span class="input-glow-line"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cMessage">Message</label>
+            <div class="input-field-wrap">
+              <textarea id="cMessage" name="message" class="form-textarea" placeholder="Tell me about your idea or project..." required></textarea>
+              <span class="input-glow-line"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-web-signal" id="cSubmitBtn">
+            <span class="btn-sheen"></span>
+            <span class="btn-text">Send Web Signal</span>
+            <span class="btn-icon">🕸</span>
+          </button>
+
+          <div class="form-status" id="formStatus">
+            🕸 Web signal transmitted successfully! Thank you for reaching out.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-web-bg">
+      <svg viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.06">
+          <line x1="720" y1="0" x2="0"    y2="300" stroke="#e00" stroke-width="1"/>
+          <line x1="720" y1="0" x2="240"  y2="300" stroke="#e00" stroke-width="1"/>
+          <line x1="720" y1="0" x2="480"  y2="300" stroke="#e00" stroke-width="1"/>
+          <line x1="720" y1="0" x2="960"  y2="300" stroke="#e00" stroke-width="1"/>
+          <line x1="720" y1="0" x2="1200" y2="300" stroke="#e00" stroke-width="1"/>
+          <line x1="720" y1="0" x2="1440" y2="300" stroke="#e00" stroke-width="1"/>
+          <ellipse cx="720" cy="0" rx="300" ry="150" fill="none" stroke="#e00" stroke-width="1"/>
+          <ellipse cx="720" cy="0" rx="600" ry="300" fill="none" stroke="#e00" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-spider" style="font-size:2rem">🕷</span>
+        <span class="logo-text" style="font-size:2.5rem">TEJAS PATIL</span>
+      </div>
+      <p class="footer-tagline">"With great code comes great responsibility."</p>
+      <nav class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-socials">
+        <a href="https://github.com/tejaspatil-dev26" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">💻</a>
+        <a href="mailto:tejaspatil2629@gmail.com" class="social-link" aria-label="Email">✉️</a>
+        <a href="https://eco-ai.andsnetwork.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Eco-AI">🌐</a>
+        <a href="#home" class="social-link" aria-label="Top">🕷</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Tejas Sharad Patil. All Rights Reserved. Built with Node.js &amp; Pure CSS Animations.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="app.js"></script>
+  <!-- AI CHATBOT WIDGET -->
+  <script>
+    try {
+      if (!localStorage.getItem('chatbot_theme') || localStorage.getItem('chatbot_theme') === 'blue' || localStorage.getItem('chatbot_theme') === 'rose') {
+        localStorage.setItem('chatbot_theme', 'darkRed');
+      }
+    } catch(e) {}
+  </script>
+  <script type="module" src="chat-widget.js"></script>
+</body>
+</html>

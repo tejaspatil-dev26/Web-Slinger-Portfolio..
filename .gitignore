@@ -1,0 +1,25 @@
+node_modules/
+**/node_modules/
+.gemini/
+.DS_Store
+Thumbs.db
+.vercel
+.vscode/
+.idea/
+.git_backup
+**/.git_backup
+
+# Python Virtual Environments & Caches
+venv/
+.venv/
+**/venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Local Data & Database
+**/app/db/chroma/
+**/uploaded_files/*
+!**/uploaded_files/.gitkeep

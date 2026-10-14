@@ -1,0 +1,21 @@
+{
+  "name": "spidyy-website",
+  "version": "1.0.0",
+  "description": "SPIDYY - Animated Spider-Man themed website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "spidyy",
+    "spider-man",
+    "animated",
+    "nodejs"
+  ],
+  "author": "SPIDYY",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^54.13.0"
+  }
+}
